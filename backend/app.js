@@ -2,10 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
-const connectDB = require('./config/database');
-const urlRoutes = require('./routes/urlRoutes');
-const rateLimiter = require('./middleware/rateLimiter');
-const config = require('./config/config');
+const connectDB = require('../backend/src/config/database');
+const urlRoutes = require('../backend/src/routes/urlRoutes');
+const rateLimiter = require('../backend/src/middleware/rateLimiter');
+const config = require('../backend/src/config/config');
 
 const app = express();
 
