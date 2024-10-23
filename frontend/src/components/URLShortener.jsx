@@ -19,32 +19,36 @@ const URLShortener = () => {
     const [copySuccess, setCopySuccess] = useState(false);
     const [showShareMenu, setShowShareMenu] = useState(false);
 
-    const generateShortCode = () => {
-        const characters =
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        let result = "";
-        for (let i = 0; i < 6; i++) {
-            result += characters.charAt(
-                Math.floor(Math.random() * characters.length)
-            );
+    // removed generateShortCode method as we have defined it in the backend/src/utils
+
+    const createShortUrl = async (longUrl) => {
+        try {
+            const response = await fetch('http://localhost:3000/shorten', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ url: longUrl }),
+            });
+            const data = await response.json();
+            return data.shortUrl;
+        } catch (error) {
+            console.error('Error:', error);
+            throw error;
         }
-        return result;
     };
 
+    // updating the handleSubmit function after writing the backend
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError("");
+        setError('');
         setLoading(true);
-        setCopySuccess(false);
-        setShowShareMenu(false);
 
         try {
-            new URL(longUrl);
-            const shortCode = generateShortCode();
-            const baseUrl = "http://localhost:3000/";
-            setShortUrl(baseUrl + shortCode);
+            const shortUrl = await createShortUrl(longUrl);
+            setShortUrl(shortUrl);
         } catch (err) {
-            setError("Please enter a valid URL including http:// or https://");
+            setError('Error creating short URL');
         } finally {
             setLoading(false);
         }
