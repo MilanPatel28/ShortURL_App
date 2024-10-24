@@ -8,6 +8,20 @@ This is a full-stack web application that allows users to convert long URLs into
 - Redirect shortened URLs to the original long URL.
 - Track the number of clicks on shortened URLs.
 
+## Screenshots of the Application
+
+### Frontend
+
+![image](https://github.com/user-attachments/assets/0e2875b3-18ad-4450-ba8b-925c52aa9cba)
+
+![image](https://github.com/user-attachments/assets/14e1837d-fda5-4d7c-9e53-b34ac5b487a8)
+
+### Backend
+
+![image](https://github.com/user-attachments/assets/c80ec919-a114-4dd5-bef0-e12476ac4fbf)
+
+![image](https://github.com/user-attachments/assets/c79b3c25-1507-41d1-8617-85dc58a73376)
+
 ## Tech Stack
 
 - **Frontend**: ReactJS, Bootstrap
@@ -30,14 +44,14 @@ This is a full-stack web application that allows users to convert long URLs into
 ShortURL_App/
 │
 ├── backend/                # Backend API (Node.js)
-│   ├── config/             # Configuration files
+│   ├── config/             # Configuration files (e.g., database connection)
 │   ├── controllers/        # Business logic
-│   ├── middlware/          # Middlware functionalities
+│   ├── middlware/          # Middleware (authentication, error handling, etc.)
 │   ├── models/             # Mongoose Models
 │   ├── routes/             # API routes
-│   ├── services/           # Defines business logic
-│   ├── utils/              # Contains utility functions
-│   └── app.js           # Entry point for the backend server
+│   ├── services/           # Service layer (handling core logic)
+│   ├── utils/              # Utility functions and helpers
+│   └── app.js              # Entry point for the backend server
 │
 ├── frontend/               # Frontend (React)
 │   ├── public/             # Static files
